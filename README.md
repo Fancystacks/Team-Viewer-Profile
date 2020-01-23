@@ -6,7 +6,7 @@
 ![team-viewer](https://user-images.githubusercontent.com/38336934/72966924-49684d00-3d7d-11ea-8bb0-4cbbd8fbb747.gif)
 
 
-### Download Team-Viewer-Profile,
+## Download:
 - Add dependencies npm jest and npm install
 
 - Type node app.js in the command line for prompt

@@ -91,7 +91,7 @@ class teamViewer {
             .prompt([
                 {
                     type: "input"
-                    , message: "Please ttpe the engineer's name"
+                    , message: "Please type the engineer's name"
                     , name: "engineerName"
                 },
                 {

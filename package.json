@@ -1,0 +1,30 @@
+{
+  "name": "team-viewer-profile",
+  "version": "1.0.0",
+  "description": "team profile",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "inquirer": "^7.0.3",
+    "jest": "^25.1.0"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
+  },
+  "scripts": {
+    "test": "jest --verbose test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fancystacks/Team-Viewer-Profile.git"
+  },
+  "author": "leah migacz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fancystacks/Team-Viewer-Profile/issues"
+  },
+  "homepage": "https://github.com/Fancystacks/Team-Viewer-Profile#readme"
+}

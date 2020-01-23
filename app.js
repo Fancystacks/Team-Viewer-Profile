@@ -14,44 +14,44 @@ const team = [];
 class teamViewer {
     confirmManager() {
         inquirer
-        .prompt([
-            {
-                type: "confirm"
-                , message: "Are you a manager?"
-                , name: "managerConfirm"
-            }
-        ]).then(res => {
-            if (res.managerConfirm) {
-                this.createManager()
-            } else {
-                console.log("Sorry, only managers can configure a team.")
-                process.exit(0);
-            }
-        })
-};
-
-        createManager() {
-            inquirer
             .prompt([
                 {
-                   type: "input"
-                   , message: "Please enter your name"
-                   , name: "managerName"
+                    type: "confirm"
+                    , message: "Are you the manager?"
+                    , name: "managerConfirm"
+                }
+            ]).then(res => {
+                if (res.managerConfirm) {
+                    this.createManager()
+                } else {
+                    console.log("Sorry, only managers can construct a team")
+                    process.exit(0);
+                }
+            })
+    };
+
+    createManager() {
+        inquirer
+            .prompt([
+                {
+                    type: "input"
+                    , message: "Please enter your name"
+                    , name: "managerName"
                 },
                 {
-                   type: "input"
-                   , message: "Please enter your ID number"
-                   , name: "managerID"
+                    type: "input"
+                    , message: "Please enter your manager ID number"
+                    , name: "managerID"
                 },
                 {
-                   type: "input"
-                   , message: "Please enter your office phone number"
-                   , name: "managerPhone"
+                    type: "input"
+                    , message: "Please enter your office phone number"
+                    , name: "managerPhone"
                 },
                 {
-                   type: "input"
-                   , message: "Please enter your email"
-                   , name: "managerEmail"
+                    type: "input"
+                    , message: "Please enter your email address"
+                    , name: "managerEmail"
                 },
             ]).then(res => {
                 const manager = new Manager(res.managerName, res.managerID, res.managerEmail, res.managerPhone);
@@ -60,12 +60,36 @@ class teamViewer {
             });
     };
 
-        createTeam() {
-            inquirer
+    createTeam() {
+        inquirer
+            .prompt([
+                {
+                    type: "list"
+                    , message: "Would you like more team members, or are you finished?"
+                    , choices: ["Engineer", "Intern", "My team is complete"]
+                    , name: "employeeType"
+                }
+            ]).then(res => {
+                if (res.employeeType === "Engineer") {
+                    this.createEngineer();
+                } else if (res.employeeType === "Intern") {
+                    this.createIntern();
+                } else {
+                    fs.writeFile(outputPath, render(team), err => {
+                        if (err) throw err;
+                        console.log("EUREKA!")
+                    })
+
+                }
+            });
+    };
+
+    createEngineer() {
+        inquirer
             .prompt([
                 {
                     type: "input"
-                    , message: "Please enter the engineer's name"
+                    , message: "Please ttpe the engineer's name"
                     , name: "engineerName"
                 },
                 {
@@ -80,7 +104,7 @@ class teamViewer {
                 },
                 {
                     type: "input"
-                    , message: "Please enter the engineer's email"
+                    , message: "Please enter engineer's email"
                     , name: "engineerEmail"
                 },
             ]).then(res => {
@@ -89,8 +113,9 @@ class teamViewer {
                 this.createTeam();
             });
     };
-        createIntern() {
-            inquirer
+
+    createIntern() {
+        inquirer
             .prompt([
                 {
                     type: "input"
@@ -104,7 +129,7 @@ class teamViewer {
                 },
                 {
                     type: "input"
-                    , message: "Please enter the intern's school"
+                    , message: "Please enter the intern's school name"
                     , name: "internSchool"
                 },
                 {
@@ -117,9 +142,11 @@ class teamViewer {
                 team.push(intern);
                 this.createTeam();
             });
-        }
- }
-     
- const viewTeam = new teamViewer();
+    }
 
- viewTeam.confirmManager();
+
+}
+
+const viewTeam = new teamViewer();
+
+viewTeam.confirmManager();

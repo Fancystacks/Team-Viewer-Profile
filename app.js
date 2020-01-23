@@ -11,6 +11,7 @@ const render = require("./lib/htmlRenderer");
 
 const team = [];
 
+// confirm manager, otherwise process.exit kicks the user out
 class teamViewer {
     confirmManager() {
         inquirer
@@ -41,7 +42,7 @@ class teamViewer {
                 {
                     type: "input"
                     , message: "Please enter your manager ID number"
-                    , name: "managerID"
+                    , name: "managerIDNum"
                 },
                 {
                     type: "input"
@@ -54,12 +55,13 @@ class teamViewer {
                     , name: "managerEmail"
                 },
             ]).then(res => {
-                const manager = new Manager(res.managerName, res.managerID, res.managerEmail, res.managerPhone);
+                const manager = new Manager(res.managerName, res.managerIDNum, res.managerEmail, res.managerPhone);
                 team.push(manager);
                 this.createTeam();
             });
     };
 
+    // reusable function to call at the end of each
     createTeam() {
         inquirer
             .prompt([
@@ -95,7 +97,7 @@ class teamViewer {
                 {
                     type: "input"
                     , message: "Please enter the engineer's ID number"
-                    , name: "engineerID"
+                    , name: "engineerIDNum"
                 },
                 {
                     type: "input"
@@ -108,7 +110,7 @@ class teamViewer {
                     , name: "engineerEmail"
                 },
             ]).then(res => {
-                const engineer = new Engineer(res.engineerName, res.engineerID, res.engineerEmail, res.engineerPhone);
+                const engineer = new Engineer(res.engineerName, res.engineerIDNum, res.engineerEmail, res.engineerPhone);
                 team.push(engineer);
                 this.createTeam();
             });
@@ -125,7 +127,7 @@ class teamViewer {
                 {
                     type: "input"
                     , message: "Please enter the intern's ID number"
-                    , name: "internID"
+                    , name: "internIDNum"
                 },
                 {
                     type: "input"
@@ -134,11 +136,11 @@ class teamViewer {
                 },
                 {
                     type: "input"
-                    , message: "Please enter the intern's email"
+                    , message: "Please enter the intern's email address"
                     , name: "internEmail"
                 },
             ]).then(res => {
-                const intern = new Intern(res.internName, res.internID, res.internEmail, res.internSchool);
+                const intern = new Intern(res.internName, res.internIDNum, res.internEmail, res.internSchool);
                 team.push(intern);
                 this.createTeam();
             });

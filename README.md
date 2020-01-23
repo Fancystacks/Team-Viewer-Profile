@@ -19,7 +19,9 @@
       - A success message will appear as file is saved to the output
 
 #### The program will print a pre-determined html template
-- File will be saved in 'output / team.html' folder
+- File will be saved in 'output / team.html' folder as shown below
+
+<img src="https://user-images.githubusercontent.com/38336934/72967287-3efa8300-3d7e-11ea-8791-022edfcd5c9c.png" width="500" height="270">
 
 *(Only managers can create a team after choosing yes on the prompt)*
 

@@ -120,3 +120,6 @@ class teamViewer {
         }
  }
      
+ const viewTeam = new teamViewer();
+
+ viewTeam.confirmManager();

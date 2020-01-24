@@ -25,4 +25,9 @@
 
 *(Only managers can create a team after choosing yes on the prompt)*
 
+## Running TDD Tests:
+<img src="https://user-images.githubusercontent.com/38336934/73081659-40fb3980-3e85-11ea-9e51-de29e566d05d.png" width="540" height="300">
+
+All pre-written tests from /test file pass!
+
 #### This site was created and deployed on [GitHub Pages](https://github.com/Fancystacks/Team-Viewer-Profile/).
